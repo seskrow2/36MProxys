@@ -11,7 +11,8 @@ echo -e "${GREEN}Starting 36MProxys Setup for Termux...${NC}"
 # --- Step 1: Update Termux and install system dependencies ---
 echo -e "\n${YELLOW}[INFO] Updating packages and installing system dependencies...${NC}"
 pkg update -y && pkg upgrade -y
-pkg install -y python libcurl openssl-dev build-essential
+# CORRECTED LINE: 'openssl-dev' is changed to 'openssl'
+pkg install -y python libcurl openssl build-essential
 
 # Check if pkg install was successful
 if [ $? -ne 0 ]; then
@@ -40,7 +41,7 @@ if [ -f "$PYTHON_SCRIPT" ]; then
     python "$PYTHON_SCRIPT"
 else
     echo -e "\n${RED}[ERROR] Main script '$PYTHON_SCRIPT' not found.${NC}"
-    echo -e "${YELLOW}[INFO] Please save the Python code as '36m-proxys.py' in the same folder as this script.${NC}"
+    echo -e "${YELLOW}[INFO] Please make sure you have '36m-proxys.py' in the same folder as this script.${NC}"
     exit 1
 fi
 
